@@ -1,14 +1,15 @@
 import React from "react";
-import logo from "./assets/LWSBlog.svg"
+import logo from "./assets/LWSBlog.svg";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <nav className="py-4 border-b">
       <div className="navbar-container">
         <div className="logo">
-          <a href="/">
+          <Link to="/">
             <img src={logo} alt="search" />
-          </a>
+          </Link>
         </div>
         <div className="auth-buttons">
           <button className="btn btn-primary">sign in</button>
