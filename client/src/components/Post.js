@@ -1,33 +1,44 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import gitImg from "./assets/git.webp";
 
-export default function Post() {
+export default function Post({ blog }) {
+  let isSavedContent = null;
+  if (blog.isSaved) {
+    isSavedContent = (
+      <div className="flex gap-2 mt-4">
+        <span className="lws-badge"> Saved </span>
+      </div>
+    );
+  }
+
+  const tagsContent = blog.tags.map((tag, index) => {
+    if (index === blog.tags.length - 1) {
+      return <span key={tag}>{`#${tag}`}</span>
+    }
+    return <span key={tag}>{`#${tag}`}, </span>
+  });
+
   return (
     <div className="lws-card">
-      <Link to="blogs/1">
-        <img src={gitImg} className="lws-card-image" alt="" />
+      <Link to={`blogs/{blog.id}`}>
+        <img src={blog.image} className="lws-card-image" alt="" />
       </Link>
       <div className="p-4">
         <div className="lws-card-header">
-          <p className="lws-publishedDate">2023-05-01</p>
+          <p className="lws-publishedDate">{blog.createdAt}</p>
           <p className="lws-likeCount">
             <i className="fa-regular fa-thumbs-up" />
-            100
+            {blog.likes}
           </p>
         </div>
-        <a href="post.html" className="lws-postTitle">
+        <Link to={`blogs/${blog.id}`} className="lws-postTitle">
           {" "}
-          Top Github Alternatives{" "}
-        </a>
+          {blog.title}{" "}
+        </Link>
         <div className="lws-tags">
-          <span>#python,</span> <span>#tech,</span> <span>#git</span>
+          {tagsContent}
         </div>
-        {/* Show this element if post is saved */}
-        <div className="flex gap-2 mt-4">
-          <span className="lws-badge"> Saved </span>
-        </div>
-        {/* Show this element if post is saved Ends */}
+        {isSavedContent}
       </div>
     </div>
   );
