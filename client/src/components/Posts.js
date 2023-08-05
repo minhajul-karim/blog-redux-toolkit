@@ -6,7 +6,7 @@ import Loader from "./Loader";
 
 export default function Posts() {
   const dispatch = useDispatch();
-  const { blogs: blogsState } = useSelector((state) => state);
+  const blogsState = useSelector((state) => state.blogs);
   const { isLoading, isError, blogs, error } = blogsState;
 
   useEffect(() => {
