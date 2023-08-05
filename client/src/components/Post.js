@@ -20,7 +20,7 @@ export default function Post({ blog }) {
 
   return (
     <div className="lws-card">
-      <Link to={`blogs/{blog.id}`}>
+      <Link to={`blogs/${blog.id}`}>
         <img src={blog.image} className="lws-card-image" alt="" />
       </Link>
       <div className="p-4">
