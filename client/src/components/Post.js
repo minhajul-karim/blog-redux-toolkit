@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import gitImg from "./assets/git.webp";
 
 export default function Post() {
   return (
     <div className="lws-card">
-      <a href="post.html">
+      <Link to="blogs/1">
         <img src={gitImg} className="lws-card-image" alt="" />
-      </a>
+      </Link>
       <div className="p-4">
         <div className="lws-card-header">
           <p className="lws-publishedDate">2023-05-01</p>
